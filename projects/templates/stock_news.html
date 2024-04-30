@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Market News</title>
+<style>
+body{font-family:Arial,sans-serif;background-color:#f8f8f8;margin:0;padding:0}
+h1{text-align:center;margin-top:20px;color:#333}
+.news-container{max-width:800px;margin:0 auto;padding:20px}
+.news-item{background-color:#fff;border-radius:5px;box-shadow:0 2px 5px rgba(0,0,0,.1);padding:20px;margin-bottom:20px}
+.news-title{font-size:20px;font-weight:bold;color:#333;margin-bottom:10px}
+.news-description{color:#666;margin-bottom:15px}
+.read-more{color:#007bff;text-decoration:none;font-weight:bold;transition:color .3s ease}
+.read-more:hover{color:#0056b3}
+</style>
+</head>
+<body>
+<h1>Latest Stock Market News</h1>
+<div class="news-container">
+{% for news in latest_news %}
+<div class="news-item">
+<h3 class="news-title">{{ news.title }}</h3>
+<p class="news-description">{{ news.description }}</p>
+<a class="read-more" href="{{ news.url }}" target="_blank">Read more</a>
+</div>
+{% endfor %}
+</div>
+</body>
+</html>

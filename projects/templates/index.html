@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="15">
+    <title>Stock Trading</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 16px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; padding: 20px; position: relative; min-height: 100vh; }
+        h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; font-size: 3rem; text-shadow: 2px 2px #fff; }
+        .ticker-container { overflow: hidden; white-space: nowrap; margin-bottom: 20px; }
+        .ticker-content { animation: ticker 20s linear infinite; padding-right: 100%; }
+        .ticker-content span { margin-right: 20px; font-weight: bold; color: #27ae60; font-size: 1.2rem; text-shadow: 1px 1px #fff; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        ul { list-style: none; padding: 0; margin-bottom: 30px; text-align: center; }
+        ul li { display: inline-block; margin-right: 20px; }
+        ul li:last-child { margin-right: 0; }
+        ul li a { padding: 12px 24px; background: #2ecc71; color: #fff; text-decoration: none; border-radius: 30px; transition: background 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        ul li a:hover { background: #27ae60; }
+        form { text-align: center; margin-bottom: 30px; }
+        .symbol-label { display: block; margin-bottom: 10px; color: #3498db; font-weight: bold; }
+        .symbol-input { width: 200px; padding: 12px; margin-bottom: 20px; border: 2px solid #3498db; border-radius: 30px; font-size: 1.1rem; transition: border-color 0.3s ease; }
+        .symbol-input:focus { border-color: #2980b9; outline: none; }
+        .button { display: inline-block; padding: 12px 24px; background: #3498db; color: #fff; text-decoration: none; border: 2px solid transparent; border-radius: 30px; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .button:hover { background: #2980b9; }
+        .latest-news-button { display: block; margin: 0 auto 30px; padding: 12px 24px; background: #e67e22; color: #fff; text-decoration: none; border: 2px solid transparent; border-radius: 30px; transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        .latest-news-button:hover { background: #d35400; }
+        #ask-anything-link { position: absolute; bottom: 20px; right: 20px; padding: 12px 24px; background: #8e44ad; color: #fff; text-decoration: none; border-radius: 30px; transition: background 0.3s ease, color 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        #ask-anything-link:hover { background: #7d3c98; }
+    </style>
+</head>
+<body>
+    <h1>Venkat bazzar: Experience the Thrills of the Indian Stock Market</h1>
+    <div class="ticker-container">
+        <div class="ticker-content">{% for ticker, price in stock_prices.items() %}<span>{{ ticker }}: <span style="color: #27ae60;">{{ price }}</span></span>{% endfor %}</div>
+    </div>
+    <ul>
+        <li><a href="{{ url_for('view_portfolio', username='user') }}" class="button primary">View Portfolio</a></li>
+        <li><a href="{{ url_for('buy') }}" class="button success">Buy Stock</a></li>
+        <li><a href="{{ url_for('sell') }}" class="button danger">Sell Stock</a></li>
+    </ul>
+    <form action="{{ url_for('analyze') }}" method="post">
+        <label for="symbol" class="symbol-label">Enter Symbol:</label><br>
+        <input type="text" id="symbol" name="symbol" maxlength="10" required class="symbol-input"><br>
+        <button type="submit" class="button primary">Analyze Stock</button>
+    </form>
+    <a href="{{ url_for('latest_news') }}" class="latest-news-button">Latest News Of Indian Market</a>
+    <a href="{{ url_for('chatbot') }}" id="ask-anything-link">Ask me Anything...</a>
+</body>
+</html>

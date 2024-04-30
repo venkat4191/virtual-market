@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 20px; color: #333; }
+        .box { background: #f3f5f7; border: 2px solid #007bff; border-radius: 5px; padding: 15px; color: #333; margin-bottom: 20px; }
+        .portfolio-info { font-weight: bold; font-size: 16px; line-height: 1.6; white-space: pre-wrap; margin-top: 0; padding: 10px; background: #fff; border-radius: 5px; text-indent: 0; }
+        .pie-chart { text-align: center; }
+        .pie-chart img { max-width: 50%; height: auto; }
+        .back-link { display: block; text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Portfolio</h1>
+    <div class="box">
+        <h2>Portfolio Information</h2>
+        <div class="portfolio-info">{{ portfolio_info }}</div>
+    </div>
+    <div class="pie-chart">
+        <h2>Portfolio Performance</h2>
+        <img src="{{ url_for('static', filename='portfolio_pie_chart.png') }}" alt="Portfolio Pie Chart">
+    </div>
+    <a href="/" class="back-link">Back to Home</a>
+</body>
+</html>

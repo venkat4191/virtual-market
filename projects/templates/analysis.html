@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f9fa; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        h2 { text-align: center; margin-top: 30px; color: #fabe1b; }
+        h1 { text-align: center; margin-top: 30px; color: hsl(39, 98%, 54%); }
+        img { display: block; margin: 0 auto; max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        a { display: inline-block; margin-top: 20px; text-align: center; text-decoration: none; color: #007bff; font-weight: bold; border: 2px solid #007bff; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s, color 0.3s; }
+        a:hover { background: #007bff; color: #fff; }
+        footer { text-align: center; margin-top: 50px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Analysis</h1>
+        <h2>Stock Data and Moving Averages</h2>
+        <img src="{{ url_for('static', filename=stock_img) }}" alt="Stock Data and Moving Averages">
+        <br><br>
+        <h2>Cumulative Returns</h2>
+        <img src="{{ url_for('static', filename=returns_img) }}" alt="Cumulative Returns">
+        <br><br>
+        <a href="{{ url_for('index') }}">Back to Homepage</a>
+    </div>
+    <footer>
+        &copy; 2024 Stock Analysis. All rights reserved.
+    </footer>
+</body>
+</html>
